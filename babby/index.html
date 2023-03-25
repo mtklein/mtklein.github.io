@@ -1,0 +1,17 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<center>
+    Baby Progress
+    <div>
+    <input type=date id=s value=2022-12-31>
+    <input type=date id=e value=2023-10-05>
+    <div>
+    <progress>
+<script>
+    document.addEventListener("change", (e) => {
+        let s = new Date(document.getElementById("s").value)
+            e = new Date(document.getElementById("e").value)
+            t = new Date()
+        document.querySelector("progress").value = (t-s)/(e-s)
+    });
+    document.dispatchEvent(new Event("change"))
+</script>
