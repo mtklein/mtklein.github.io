@@ -10,8 +10,8 @@
     document.addEventListener("change", (e) => {
         let s = new Date(document.getElementById("s").value)
             e = new Date(document.getElementById("e").value)
-            t = new Date()
-        document.querySelector("progress").value = (t-s)/(e-s)
-    });
+            n = new Date()
+        document.querySelector("progress").value = (n-s)/(e-s)
+    })
     document.dispatchEvent(new Event("change"))
 </script>
