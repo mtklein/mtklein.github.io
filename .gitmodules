@@ -1,0 +1,3 @@
+[submodule "sc2k"]
+	path = sc2k
+	url = https://github.com/mtklein/sc2k
