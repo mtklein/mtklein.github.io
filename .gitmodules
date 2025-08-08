@@ -1,3 +1,6 @@
 [submodule "sc2k"]
 	path = sc2k
 	url = https://github.com/mtklein/sc2k
+[submodule "tictacs"]
+	path = tictacs
+	url = https://github.com/mtklein/tictacs
