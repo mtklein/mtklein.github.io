@@ -2,19 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#141b29">
 <title>October Sunrise — One Shot</title>
+<link rel="stylesheet" href="./shared/interface.css">
 <style>
+
 :root{color-scheme:dark;font-family:system-ui,-apple-system,sans-serif;background:#141b29;color:#f6ecdb}
-*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;overscroll-behavior:none}
-body{display:flex;justify-content:center;touch-action:none}
-.shell{width:min(100%,540px);height:100%;height:100dvh;display:flex;flex-direction:column;background:#1d2636;box-shadow:0 0 60px #080e19}
-.top{height:42px;flex:none;display:flex;align-items:center;justify-content:space-between;padding:0 18px;background:#111926;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#e6bea2}
-.top span:last-child{opacity:.65}
-.stage{position:relative;flex:1;min-height:0;overflow:hidden;background:#23314a}
-canvas{width:100%;height:100%;display:block}
-.overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:24px;background:#101929b8;text-align:center}
+.stage{background:#23314a}.overlay{background:#101929b8;text-align:center;align-items:center}
 .overlay[hidden]{display:none}
 .card{max-width:340px;padding:28px 22px;background:#182334ee;border:1px solid #e6bea270;border-radius:6px;box-shadow:0 15px 45px #070d1b80}
 .eyebrow{font-size:10px;letter-spacing:.25em;color:#ebb695;text-transform:uppercase}
@@ -22,64 +17,45 @@ h1{font-family:Georgia,serif;font-weight:400;font-size:32px;line-height:1.12;mar
 p{font-size:14px;line-height:1.5;color:#d5d5d8}
 .cta{margin-top:10px;border:1px solid #f5c1a2;background:#a34842;color:#fff9ec;border-radius:4px;padding:12px 22px;font:inherit;font-weight:700;cursor:pointer}
 .hint{position:absolute;left:12px;right:12px;bottom:14px;text-align:center;font-size:12px;text-shadow:0 2px 5px #08101d;pointer-events:none;color:#fff1de}
-.controller{flex:none;height:clamp(206px,36dvh,285px);padding:12px 17px max(14px,env(safe-area-inset-bottom));background:linear-gradient(150deg,#d5d3cc,#aaa9a4);color:#292b32;border-top:7px solid #363b43;display:flex;flex-direction:column;justify-content:space-between;user-select:none;-webkit-user-select:none}
-.brand{font-weight:900;letter-spacing:.2em;color:#9c353d;font-style:italic;font-size:13px}
-.controls{display:grid;grid-template-columns:1fr 1fr 1fr;align-items:center;gap:4px;min-height:132px}
-.dpad{width:126px;height:126px;position:relative;justify-self:start}
-.key{position:absolute;border:0;background:#292d34;color:#ddd;touch-action:none;cursor:pointer;font-weight:700;box-shadow:inset 0 -3px #171b20,0 3px 2px #777}
-.key:active,.key.pressed{background:#4b5360;transform:translateY(2px);box-shadow:inset 0 -1px #171b20}
-.dir{width:42px;height:42px;font-size:17px}.up{left:42px;top:0;border-radius:4px 4px 0 0}.down{left:42px;top:84px;border-radius:0 0 4px 4px}.left{left:0;top:42px;border-radius:4px 0 0 4px}.right{left:84px;top:42px;border-radius:0 4px 4px 0}
-.cross{position:absolute;left:42px;top:42px;width:42px;height:42px;background:#292d34}
-.mid{display:flex;justify-content:center;align-items:end;gap:9px;align-self:stretch;padding-bottom:5px}
-.small-control{display:flex;flex-direction:column;align-items:center;gap:10px;font-size:9px;font-weight:700;letter-spacing:.08em}
-.pill{position:static;width:40px;height:15px;border-radius:12px;transform:rotate(-25deg)}
-.pill:active,.pill.pressed{transform:rotate(-25deg) translateY(2px)}
-.face{display:flex;justify-content:flex-end;gap:11px;align-items:center}
-.face-control{display:flex;flex-direction:column;align-items:center;gap:7px;font-size:11px;font-weight:800}
-.round{position:static;width:54px;height:54px;border-radius:50%;background:#a23846;color:#fff7e9;font-size:17px;box-shadow:inset 0 -4px #702631,0 4px 2px #777}
-.round:active,.round.pressed{background:#c9525b;box-shadow:inset 0 -1px #702631}
-.footer{font-size:10px;text-align:center;color:#62646a;letter-spacing:.04em}
-@media(max-width:375px){.controller{padding-left:10px;padding-right:10px}.dpad{transform:scale(.86);transform-origin:left center}.round{width:47px;height:47px}.controls{gap:0}.face{gap:5px}}
-@media(min-width:700px){.shell{border-left:1px solid #566070;border-right:1px solid #566070}}
+
 </style>
 </head>
 <body>
-<main class="shell">
-<header class="top"><span>ONE SHOT / 001</span><span>October Sunrise</span></header>
+<main class="machine">
+<header class="header"><a href="./index.html" aria-label="Back to One Shot collection">← ONE SHOT</a><span>NO. 001 / OCTOBER SUNRISE</span></header>
 <section class="stage" aria-label="October Sunrise game">
 <canvas id="game" aria-label="Autumn landscape with a path toward the sunrise"></canvas>
 <div class="hint" id="hint" aria-live="polite"></div>
-<div class="overlay" id="overlay">
-<div class="card"><div class="eyebrow" id="eyebrow">A small experience</div><h1 id="title">October Sunrise</h1><p id="message">Walk east through the falling leaves. Stop at the overlook and let the morning arrive.</p><button class="cta" id="continue">Begin</button></div>
+<div class="screen overlay" id="overlay">
+<div class="panel card"><div class="eyebrow" id="eyebrow">A small experience</div><h1 id="title">October Sunrise</h1><p id="message">Walk east through the falling leaves. Stop at the overlook and let the morning arrive.</p><button class="cta" id="continue">Begin</button></div>
 </div>
 </section>
-<section class="controller" aria-label="Game controller">
-<div class="brand">ONE SHOT</div>
-<div class="controls">
-<div class="dpad" aria-label="Directional pad"><div class="cross"></div><button class="key dir up" data-key="up" aria-label="Up">▲</button><button class="key dir down" data-key="down" aria-label="Down">▼</button><button class="key dir left" data-key="left" aria-label="Left">◀</button><button class="key dir right" data-key="right" aria-label="Right">▶</button></div>
-<div class="mid"><div class="small-control"><button class="key pill" data-key="select" aria-label="Select"></button><span>SELECT</span></div><div class="small-control"><button class="key pill" data-key="start" aria-label="Start"></button><span>START</span></div></div>
-<div class="face"><div class="face-control"><button class="key round" data-key="b" aria-label="B">B</button><span>B</span></div><div class="face-control"><button class="key round" data-key="a" aria-label="A">A</button><span>A</span></div></div>
-</div><div class="footer">D-PAD MOVE · B HURRY · A PAUSE &amp; LISTEN · START MENU · SELECT RESTART</div>
-</section>
+<section data-controller></section>
 </main>
+<script src="./shared/interface.js"></script>
 <script type="module">
 const canvas=document.querySelector('#game'),ctx=canvas.getContext('2d');
 const overlay=document.querySelector('#overlay'),hint=document.querySelector('#hint');
-const buttons=[...document.querySelectorAll('[data-key]')],held=new Set();
+const input=OneShot.mount(document.querySelector('.machine'),{
+  meta:'OS / MORNING LIGHT',labels:{a:'LISTEN',b:'HURRY'},
+  hints:{left:'D-PAD MOVE · A LISTEN',right:'START PAUSE · SELECT RESTART'},
+  ariaLabels:{up:'Move up',down:'Move down',left:'Move left',right:'Move right',a:'A: stop and listen',b:'B: hurry',start:'Start: pause or resume',select:'Select: restart'},
+  onPress:press,onSuspend:pause
+}),held=input.held;
 let scene,mode='intro',last=0,w=0,h=0,dpr=1;
 const clamp=(v,a,b)=>Math.max(a,Math.min(b,v)),lerp=(a,b,t)=>a+(b-a)*t;
 function resize(){const r=canvas.getBoundingClientRect();dpr=Math.min(devicePixelRatio||1,2);w=r.width;h=r.height;canvas.width=Math.round(w*dpr);canvas.height=Math.round(h*dpr);ctx.setTransform(dpr,0,0,dpr,0,0)}
 new ResizeObserver(resize).observe(canvas);
 function show(eyebrow,title,message,button){document.querySelector('#eyebrow').textContent=eyebrow;document.querySelector('#title').textContent=title;document.querySelector('#message').textContent=message;document.querySelector('#continue').textContent=button;overlay.hidden=false}
-function begin(){scene=OctoberSunrise();mode='playing';overlay.hidden=true}
-document.querySelector('#continue').addEventListener('click',()=>{if(mode==='finished'||mode==='intro')begin();else{mode='playing';overlay.hidden=true}});
-function press(key){if(key==='select'){begin();return}if(key==='start'){if(mode==='playing'){mode='paused';show('A moment held','Paused','The light will wait for you.','Continue')}else if(mode==='paused'){mode='playing';overlay.hidden=true}else if(mode==='intro'||mode==='finished')begin();return}if(mode==='intro'&&key==='a'){begin();return}if(mode==='finished'&&key==='a'){begin();return}held.add(key)}
-function release(key){held.delete(key)}
-for(const button of buttons){let id=null;button.addEventListener('pointerdown',e=>{e.preventDefault();button.setPointerCapture(e.pointerId);id=e.pointerId;button.classList.add('pressed');press(button.dataset.key)});const up=e=>{if(id!==e.pointerId)return;id=null;button.classList.remove('pressed');release(button.dataset.key)};button.addEventListener('pointerup',up);button.addEventListener('pointercancel',up);button.addEventListener('lostpointercapture',()=>{id=null;button.classList.remove('pressed');release(button.dataset.key)})}
-const keys={ArrowUp:'up',ArrowDown:'down',ArrowLeft:'left',ArrowRight:'right',w:'up',s:'down',a:'left',d:'right',z:'b',x:'a',Enter:'start',Shift:'select'};
-addEventListener('keydown',e=>{const k=keys[e.key];if(!k)return;e.preventDefault();if(!e.repeat)press(k)});
-addEventListener('keyup',e=>{const k=keys[e.key];if(k){e.preventDefault();release(k)}});
-addEventListener('blur',()=>held.clear());
+function begin(){document.activeElement?.blur();input.clear();scene=OctoberSunrise();mode='playing';overlay.hidden=true}
+function pause(){if(mode!=='playing')return;mode='paused';input.clear();show('A moment held','Paused','The light will wait for you.','Continue')}
+function resume(){document.activeElement?.blur();input.clear();mode='playing';overlay.hidden=true}
+document.querySelector('#continue').addEventListener('click',()=>{if(mode==='finished'||mode==='intro')begin();else resume()});
+function press(key){
+  if(key==='select'){begin();return}
+  if(key==='start'){if(mode==='playing')pause();else if(mode==='paused')resume();else begin();return}
+  if(key==='a'&&(mode==='intro'||mode==='finished'))begin();
+}
 function hill(y,amp,color,phase){ctx.fillStyle=color;ctx.beginPath();ctx.moveTo(0,h);ctx.lineTo(0,y);for(let x=0;x<=w+8;x+=8)ctx.lineTo(x,y+Math.sin(x/w*7+phase)*amp+Math.sin(x/w*14+phase)*amp*.23);ctx.lineTo(w,h);ctx.fill()}
 function tree(x,y,size,seed,near){ctx.save();ctx.translate(x,y);ctx.fillStyle=near?'#352d36':'#55404a';ctx.fillRect(-size*.055,-size*.18,size*.11,size*.75);const colors=near?['#b55a42','#cf7544','#d39550','#855044']:['#855360','#ad6956','#c08359'];for(let i=0;i<9;i++){const a=i*2.4+seed,dist=size*(.13+(i%4)*.055);ctx.fillStyle=colors[(i+seed)%colors.length|0];ctx.beginPath();ctx.ellipse(Math.cos(a)*dist,-size*.4+Math.sin(a)*dist*.7,size*(.16+(i%3)*.025),size*.14,a,0,7);ctx.fill()}ctx.restore()}
 function OctoberSunrise(){
@@ -93,7 +69,7 @@ function OctoberSunrise(){
  const atOverlook=s.x>.79&&s.y<.66;
  s.still=atOverlook&&!moving&&input.has('a')?s.still+dt:Math.max(0,s.still-dt*.6);
  s.light=clamp(s.light+dt*(atOverlook?.024:.009),0,1);
- if(s.still>4&&!s.done){s.done=true;mode='finished';show('The morning is yours','The day begins','For a few minutes, you were exactly where you needed to be.','Walk again')}
+ if(s.still>4&&!s.done){s.done=true;mode='finished';input.clear();show('The morning is yours','The day begins','For a few minutes, you were exactly where you needed to be.','Walk again')}
  hint.textContent=atOverlook?'Hold A and watch the light':s.x<.45?'Follow the path east →':'The overlook is just ahead →';
  };
  s.draw=()=>{

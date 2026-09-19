@@ -9,10 +9,10 @@ Build an interactive piece of art from the user's prompt in `mtklein/mtklein.git
 
 ## Form
 
-- Each experience is a standalone, directly loadable `oneshot/<slug>.html` page, linked from `oneshot/index.html`. Keep the collection index welcoming and navigable.
+- Each experience has its own directly loadable `oneshot/<slug>.html` page, linked from `oneshot/index.html`. Keep the collection index welcoming and navigable.
 - Target portrait phones: game area above an on-screen digital D-pad, Start, Select, B, and A in a classic NES-like arrangement. Support simultaneous touch inputs, pointer cancellation, and a useful keyboard mapping. The controller is a recurring interface; the game's art need not be pixel art or 8-bit.
 - A splash screen and roughly five minutes or less of playable content. Give the piece an ending or satisfying stopping point. Avoid instructions that drown out the experience.
-- Keep the page workable as static GitHub Pages content under `/oneshot/`; prefer self-contained assets and relative links. Reuse or adapt the existing controller and input code from `october-sunrise.html` where useful. Shared technical code may evolve, but do not make every game feel like the same scene with new colors.
+- Keep the page workable as static GitHub Pages content under `/oneshot/`; use relative links and the shared interface in `oneshot/shared/interface.css` and `oneshot/shared/interface.js`. Read the shared-interface section of `oneshot/README.md` for the shell and `OneShot.mount()` API. Configure button labels and game callbacks rather than copying controller markup, input listeners, or selection protection into each page. Keep the game’s art, rules, sound, and timeline in its own page. Shared technical code may evolve, but do not make every game feel like the same scene with new colors.
 
 ## Creative direction
 
@@ -25,3 +25,4 @@ For music-inspired work, a user-started external recording can be part of the pe
 Read `oneshot/index.html`, the existing experiences, and this repo's relevant instructions. Translate the prompt into a small sequence with a beginning, transformation, and ending; use the requested effort level to decide how much polish, audio, imagery, and testing fit. Implement the page, add a clear entry on the index, and update collection documentation if its description or controls become inaccurate. Work directly on `main` for this repo's simple Pages publishing workflow unless the user says otherwise.
 
 Verify that the HTML and JavaScript load, the portrait layout fits a small phone, touch and keyboard controls work, the ending is reachable, and index navigation reaches the page. If live deployment is unavailable, report precisely what was checked. In the final response link the playable page and briefly describe the interaction and any important limitation.
+
