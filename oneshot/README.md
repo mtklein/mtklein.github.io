@@ -1,13 +1,11 @@
 # One Shot
 
-Short, self-contained game experiences shaped by a prompt. Open [the prototype](./) on a portrait phone or use the keyboard on desktop.
+Short, self-contained interactive pieces shaped by a prompt. Browse [the collection](./) on a portrait phone or use a keyboard on desktop. Each experience has its own HTML page; the index links to every one.
 
-## First scene: October Sunrise
+## October Sunrise
 
-Walk east to the overlook. Hold A to stop and listen as the light arrives. B makes you walk faster; Start pauses; Select restarts. Arrow keys or WASD move on desktop, X is A, Z is B, Enter is Start, and Shift is Select.
+[Play the first piece](./october-sunrise.html). Walk east to the overlook and hold A to stop and watch the light arrive. B makes you walk faster; Start pauses; Select restarts. Arrow keys or WASD move on desktop, X is A, Z is B, Enter is Start, and Shift is Select.
 
-## Scene contract
+The page contains its own portrait canvas, controller, input handling, timing, and a scene factory named `OctoberSunrise()`. It is a useful technical starting point, not a required creative template. Future pieces should find their own interactions and visual language while retaining the shared controller layout.
 
-`index.html` contains the shared portrait shell, canvas, controller, input handling, timing, and a scene factory named `OctoberSunrise()`. A scene factory returns an object with `update(dt, held)` and `draw()`. The shell owns button and keyboard state, calls update while playing, and draws every frame. Use a new scene factory for each prompt; its visuals, pacing, interactions, and ending should follow that prompt rather than an imposed 8-bit art style. The NES-like controls are the consistent interface.
-
-This is dependency-free static HTML, CSS, and JavaScript. No build or asset pipeline is required. Publishing from the root of `main` makes it available at `https://mtklein.github.io/oneshot/`. The initial experience has no audio and uses original canvas art.
+The repo's [One Shot skill](../.codex/skills/one-shot/SKILL.md) describes how to turn a prompt and optional effort budget into another short experience. These pages are static HTML, CSS, and JavaScript served from `main`; no build step is needed. The first piece has original canvas art and no audio.
